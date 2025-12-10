@@ -152,9 +152,9 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 16px;
-      margin-bottom: 42px;
       font-size: 13px;
       color: var(--muted);
+      margin-top: 16px;
     }
 
     .logo-strip-logos {
@@ -256,7 +256,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: contrast(1.1) saturate(1.1);
+      filter: contrast(1.1) saturate(1.05);
     }
 
     /* BOTTOM CTA */
@@ -377,33 +377,13 @@
         </div>
 
         <div class="hero-image-wrap">
-          <!-- Road cycling photo from Wikimedia Commons (CC BY-SA 4.0) -->
+          <!-- השתמש בתמונה שצירפת, שמורה כ-images/hero-cyclists.jpg -->
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cycling_on_the_roads.jpg/960px-Cycling_on_the_roads.jpg"
-            alt="Group of cyclists riding on the road"
+            src="images/hero-cyclists.jpg"
+            alt="Cyclists climbing a mountain road"
           />
         </div>
       </section>
-
-      <!-- LOGO STRIP -->
-      <div class="logo-strip">
-        <span class="logo-strip-label">
-          Compatible with your favorite platforms:
-        </span>
-        <div class="logo-strip-logos">
-          <!-- Strava logo (text logo SVG from Wikimedia / Strava) -->
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Strava_Logo.svg"
-            alt="Strava logo"
-          />
-          <!-- Garmin icon (CC0 from SVGRepo) -->
-          <img
-            src="https://www.svgrepo.com/download/306081/garmin.svg"
-            alt="Garmin logo"
-            class="logo-small"
-          />
-        </div>
-      </div>
 
       <!-- HOW IT WORKS -->
       <section id="how">
@@ -458,8 +438,8 @@
           </div>
           <div class="visual-image-wrap">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cycling_on_the_roads.jpg/960px-Cycling_on_the_roads.jpg"
-              alt="Cyclists riding on the road"
+              src="images/hero-cyclists.jpg"
+              alt="Cyclists riding on a mountain road"
             />
           </div>
         </div>
@@ -493,8 +473,27 @@
       </section>
 
       <footer>
-        LOEW is an independent product and is not endorsed by Strava or Garmin.
-        Logos are used only to indicate compatibility with their platforms.
+        <div class="logo-strip">
+          <span class="logo-strip-label">
+            Compatible with your favorite platforms:
+          </span>
+          <div class="logo-strip-logos">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Strava_Logo.svg"
+              alt="Strava logo"
+            />
+            <img
+              src="https://www.svgrepo.com/download/306081/garmin.svg"
+              alt="Garmin logo"
+              class="logo-small"
+            />
+          </div>
+        </div>
+
+        <p style="margin-top:16px;">
+          LOEW is an independent product and is not endorsed by Strava or Garmin.
+          Logos are used only to indicate compatibility with their platforms.
+        </p>
       </footer>
     </main>
   </div>
