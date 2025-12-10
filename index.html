@@ -2,26 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LOEW – Personalized Recovery & Training Coach | myloew.fit</title>
+  <title>LOEW – Recovery & Training Coach | myloew.fit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="LOEW is a data-driven recovery & cycling coach for cancer survivors and patients returning safely to endurance sport, powered by wearable data from Garmin, Strava, and other platforms."
+    content="LOEW is a data-driven recovery & cycling coach for cancer survivors and high-risk athletes, inspired by the spirit of grand tours and powered by wearable data."
   />
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --accent: #3b82f6;
-      --accent-soft: rgba(59, 130, 246, 0.08);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2933;
-      --danger: #f97373;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
-      --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.45);
-      --shadow-subtle: 0 10px 25px rgba(0, 0, 0, 0.35);
+      --tdf-yellow: #ffd800;
+      --tdf-yellow-soft: #ffe764;
+      --bg-dark: #111111;
+      --bg-dark-alt: #181818;
+      --bg-light: #ffffff;
+      --text-main: #111111;
+      --text-muted: #555555;
+      --border-soft: #e5e5e5;
+      --accent-blue: #007bff;
+      --radius-card: 18px;
+      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.25);
     }
 
     * {
@@ -32,8 +31,8 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
-      color: var(--text);
+      background: #f5f5f5;
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -42,162 +41,205 @@
       text-decoration: none;
     }
 
-    .page {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 32px 20px 72px;
+    /* TOP STRIPE */
+
+    .top-stripe {
+      background: var(--tdf-yellow);
+      height: 6px;
+      width: 100%;
     }
 
+    /* HEADER */
+
     header {
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 40px;
+      gap: 18px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: radial-gradient(circle at 20% 0%, #4f46e5, #0ea5e9);
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #111;
+      background: radial-gradient(circle at 30% 15%, #ffffff, #ffd800);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .logo-text-main {
-      font-weight: 650;
-      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 20px;
       text-transform: uppercase;
-      font-size: 14px;
     }
 
-    .logo-text-sub {
+    .brand-text-main {
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .brand-text-sub {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
+      color: var(--text-muted);
     }
 
-    .pill {
-      font-size: 11px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
     }
 
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--tdf-yellow);
+      transition: width 0.2s ease;
     }
 
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 32px;
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-badge {
+      background: #111;
+      color: #f5f5f5;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
     }
 
     @media (max-width: 880px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      header {
+      .header-inner {
         flex-direction: column;
         align-items: flex-start;
       }
+      nav {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
     }
 
+    /* MAIN WRAPPER */
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 26px 20px 60px;
+    }
+
+    /* HERO SECTION */
+
     .hero {
-      padding: 26px 22px 26px;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(
-          135deg,
-          rgba(17, 24, 39, 0.96),
-          rgba(3, 7, 18, 0.96)
-        ),
-        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.35), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.6fr);
+      gap: 26px;
+      margin-bottom: 34px;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left {
+      background: var(--bg-light);
+      border-radius: var(--radius-card);
+      padding: 26px 26px 22px;
+      box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-tagline {
-      font-size: 12px;
+    .hero-tag {
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
 
     .hero-title {
-      font-size: 31px;
-      line-height: 1.15;
-      font-weight: 750;
-      margin-bottom: 10px;
+      font-size: 32px;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
-    .hero-title span.accent {
-      background: linear-gradient(to right, #60a5fa, #a855f7, #4ade80);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-title span {
+      background: var(--tdf-yellow);
+      padding: 0 4px;
+      box-decoration-break: clone;
     }
 
     .hero-subtitle {
       font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      max-width: 420px;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin-bottom: 14px;
     }
 
     .hero-hebrew {
       font-size: 13px;
-      color: #e5e7eb;
       font-weight: 500;
-      margin-bottom: 18px;
       direction: rtl;
       text-align: right;
+      margin-bottom: 16px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .btn-primary {
-      padding: 10px 18px;
-      border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      color: white;
+      border-radius: 999px;
+      padding: 10px 20px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       cursor: pointer;
+      background: #111111;
+      color: #f5f5f5;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
     }
 
     .btn-primary span {
@@ -206,150 +248,217 @@
     }
 
     .btn-secondary {
-      padding: 9px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.7);
-      color: var(--muted);
+      padding: 9px 16px;
       font-size: 12px;
-      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid #111111;
+      background: transparent;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      cursor: pointer;
     }
 
-    .hero-footer {
+    .hero-foot {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      align-items: center;
+      justify-content: flex-start;
+      margin-top: 6px;
       font-size: 11px;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
-    .hero-metric {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .hero-foot-item {
+      border-left: 2px solid #111;
+      padding-left: 10px;
     }
 
-    .hero-metric-label {
+    .hero-foot-label {
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-size: 10px;
-      color: #6b7280;
     }
 
-    .hero-metric-value {
-      font-size: 13px;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .highlight-card {
-      margin-top: 16px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(8, 47, 73, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.5);
-      font-size: 11px;
-      color: #e0f2fe;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .highlight-badge {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-    }
-
-    .panel {
-      padding: 18px 18px 18px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(
-        145deg,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.98)
-      );
-      border: 1px solid rgba(30, 64, 175, 0.5);
-      box-shadow: var(--shadow-subtle);
-      margin-bottom: 18px;
-    }
-
-    .panel-title {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .panel-main {
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .panel-strong {
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .panel-sub {
+    .hero-foot-value {
       font-size: 12px;
-      color: var(--muted);
+      font-weight: 600;
+      color: #111;
+    }
+
+    .hero-stripe {
+      position: absolute;
+      right: -60px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 30% 20%, var(--tdf-yellow-soft), var(--tdf-yellow));
+      opacity: 0.35;
+      transform: rotate(-18deg);
+    }
+
+    /* HERO RIGHT – DARK PANEL */
+
+    .hero-right {
+      background: var(--bg-dark);
+      color: #f5f5f5;
+      border-radius: var(--radius-card);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-title {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--tdf-yellow-soft);
       margin-bottom: 10px;
     }
 
-    .list {
+    .hero-right-main {
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .hero-right-list {
       list-style: none;
-      padding: 0;
       margin: 0;
-      display: grid;
-      gap: 6px;
+      padding: 0;
       font-size: 12px;
-      color: var(--muted);
     }
 
-    .list li::before {
-      content: "•";
-      margin-right: 6px;
-      color: var(--accent);
+    .hero-right-list li {
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 14px;
+      color: #e5e5e5;
     }
 
-    .badge-row {
+    .hero-right-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--tdf-yellow);
+    }
+
+    .hero-right-ribbon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(
+        -45deg,
+        rgba(255, 216, 0, 0.15),
+        rgba(255, 216, 0, 0.85)
+      );
+      transform: translate(40px, 40px);
+    }
+
+    .hero-badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 8px;
+      font-size: 10px;
     }
 
-    .badge {
-      font-size: 10px;
-      padding: 4px 8px;
+    .hero-badge {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 216, 0, 0.8);
+      padding: 3px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
+
+    /* CONTENT SECTIONS */
+
+    .sections {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 960px) {
+      .sections {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sections {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-light);
+      border-radius: var(--radius-card);
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+      border-top: 4px solid var(--tdf-yellow);
+    }
+
+    .card-title {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-main {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .card-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .card-list li {
+      margin-bottom: 6px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .card-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #111;
+    }
+
+    /* FOOTER */
 
     footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      border-top: 1px solid var(--border-soft);
+      padding: 18px 20px 26px;
+      font-size: 11px;
+      color: var(--text-muted);
+      background: #fafafa;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       gap: 10px;
-      font-size: 11px;
-      color: var(--muted);
+      flex-wrap: wrap;
     }
 
     .footer-links {
@@ -366,161 +475,161 @@
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="logo">
-        <div class="logo-mark">L</div>
+  <div class="top-stripe"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">L</div>
         <div>
-          <div class="logo-text-main">LOEW</div>
-          <div class="logo-text-sub">PERSONALIZED TRAINING & RECOVERY</div>
+          <div class="brand-text-main">LOEW</div>
+          <div class="brand-text-sub">RECOVERY & CYCLING COACH</div>
         </div>
       </div>
-      <div class="pill">
-        <span class="pill-dot"></span>
-        Private beta &mdash; accepting early partners
-      </div>
-    </header>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#garmin">Garmin</a>
+        <a href="#privacy">Privacy</a>
+        <span class="nav-badge">Private Beta</span>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-      <!-- LEFT: HERO -->
-      <section class="hero">
-        <div class="hero-tagline">Data-driven recovery & endurance coaching</div>
+  <main class="page">
+    <section class="hero" id="top">
+      <div class="hero-left">
+        <div class="hero-stripe"></div>
+
+        <div class="hero-tag">Health-first endurance coaching</div>
         <h1 class="hero-title">
-          A smarter way back to
-          <span class="accent">the bike</span>
-          after cancer.
+          A smarter way back to <span>the bike</span> after cancer.
         </h1>
 
         <p class="hero-subtitle">
-          LOEW is a personalized recovery & cycling coach built by a cancer
+          LOEW is a personalized recovery & cycling coach built by a leukemia
           survivor, helping patients and survivors return safely to endurance
           training using real data from Garmin, Strava and other platforms.
         </p>
 
         <p class="hero-hebrew">
           לואו (LOEW) הוא מאמן חכם לחזרה בטוחה לאימונים אחרי מחלה קשה, עם
-          ניתוח נתונים אמיתי מהשעון והמחשב רכיבה.
+          ניתוח נתונים מהשעון והמחשב רכיבה כדי להגן על הבריאות ולתכנן עומס
+          נכון.
         </p>
 
         <div class="hero-actions">
-          <a href="mailto:hello@myloew.fit?subject=LOEW%20–%20Garmin%20partner%20inquiry">
-            <button class="btn-primary" type="button">
-              Talk to us about Garmin access
+          <a href="mailto:hello@myloew.fit?subject=LOEW%20%E2%80%93%20Garmin%20integration">
+            <button type="button" class="btn-primary">
+              Talk to us about Garmin
               <span>➜</span>
             </button>
           </a>
           <a href="mailto:hello@myloew.fit?subject=Join%20LOEW%20beta">
-            <button class="btn-secondary" type="button">
-              Join the recovery & cycling beta
+            <button type="button" class="btn-secondary">
+              Join the recovery beta
             </button>
           </a>
         </div>
 
-        <div class="hero-footer">
-          <div class="hero-metric">
-            <span class="hero-metric-label">FOUNDER STORY</span>
-            <span class="hero-metric-value">
-              Built by a leukemia survivor & former national cyclist
-            </span>
+        <div class="hero-foot">
+          <div class="hero-foot-item">
+            <div class="hero-foot-label">Founder story</div>
+            <div class="hero-foot-value">
+              Leukemia survivor & former national cyclist
+            </div>
           </div>
-          <div class="hero-metric">
-            <span class="hero-metric-label">PRIMARY USERS</span>
-            <span class="hero-metric-value">Cancer survivors & high-risk athletes</span>
-          </div>
-        </div>
-
-        <div class="highlight-card">
-          <div class="highlight-badge">β</div>
-          <div>
-            Currently building integrations with
-            <strong>Garmin</strong> and <strong>Strava</strong> to power
-            health-first analytics & adaptive training.
+          <div class="hero-foot-item">
+            <div class="hero-foot-label">Primary users</div>
+            <div class="hero-foot-value">
+              Cancer survivors & high-risk athletes
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- RIGHT: DETAILS -->
-      <section>
-        <article class="panel">
-          <div class="panel-title">What LOEW does</div>
-          <p class="panel-main">
-            <span class="panel-strong">LOEW</span> analyzes real-world cycling
-            and activity data (power, heart rate, GPS, elevation, sleep,
-            recovery metrics) from connected wearables to build a
-            <span class="panel-strong">safe, adaptive training plan</span> for
-            individuals returning to sport after serious illness.
-          </p>
-          <p class="panel-sub">
-            The platform focuses on:
-          </p>
-          <ul class="list">
-            <li>Monitoring load vs. recovery for cancer survivors and patients.</li>
-            <li>Estimating FTP, heart-rate thresholds and intensity zones safely.</li>
-            <li>Recommending daily and weekly training tailored to medical history.</li>
-            <li>Flagging abnormal responses (HR, power, fatigue) and suggesting rest.</li>
-          </ul>
-          <div class="badge-row">
-            <span class="badge">Cycling-first</span>
-            <span class="badge">Recovery-oriented</span>
-            <span class="badge">Evidence-inspired training logic</span>
-          </div>
-        </article>
+      <div class="hero-right">
+        <div class="hero-right-title">What LOEW focuses on</div>
+        <div class="hero-right-main">
+          LOEW uses power, heart-rate, GPS, elevation, sleep and recovery metrics
+          to keep training <strong>effective but safe</strong> for athletes coming
+          back from serious illness.
+        </div>
+        <ul class="hero-right-list">
+          <li>Monitoring load vs. recovery for cancer survivors.</li>
+          <li>Estimating FTP and HR thresholds conservatively.</li>
+          <li>Adaptive training plans based on recent data.</li>
+          <li>Flagging unusual responses and suggesting rest.</li>
+        </ul>
 
-        <article class="panel">
-          <div class="panel-title">Why we need Garmin Connect access</div>
-          <p class="panel-main">
-            Garmin devices already capture the depth of data we need:
-            <span class="panel-strong">
-              power, heart rate, sleep, stress, body battery and detailed FIT
-              files
-            </span>.
-            Direct access to Garmin Connect allows LOEW to:
-          </p>
-          <ul class="list">
-            <li>Deliver near real-time feedback after each session.</li>
-            <li>Use full-fidelity FIT/GPX data for accurate power & HR analysis.</li>
-            <li>Combine daily health metrics with training load for safer decisions.</li>
-          </ul>
-          <p class="panel-sub">
-            We expect an initial beta of ~50–100 users (survivors & high-risk
-            athletes), with modest API usage per user per week and strict
-            adherence to Garmin’s developer and brand guidelines.
-          </p>
-        </article>
+        <div class="hero-badge-row">
+          <span class="hero-badge">Cycling-first</span>
+          <span class="hero-badge">Recovery-oriented</span>
+          <span class="hero-badge">Evidence-inspired</span>
+        </div>
 
-        <article class="panel">
-          <div class="panel-title">Privacy & data protection</div>
-          <p class="panel-main">
-            LOEW treats health and activity data as highly sensitive. We will:
-          </p>
-          <ul class="list">
-            <li>Request explicit consent for every data connection (Garmin, Strava, etc.).</li>
-            <li>Store data securely with access controls and encryption in transit.</li>
-            <li>Never sell or share identifiable data with third parties.</li>
-            <li>Allow users to disconnect and delete their data at any time.</li>
-          </ul>
-          <p class="panel-sub">
-            A full privacy policy and data-processing agreement will be
-            provided as part of any formal integration or partnership.
-          </p>
-        </article>
-      </section>
-    </main>
+        <div class="hero-right-ribbon"></div>
+      </div>
+    </section>
 
-    <footer>
+    <section class="sections" id="about">
+      <article class="card">
+        <div class="card-title">The LOEW concept</div>
+        <div class="card-main">
+          LOEW is not a social network. It is a focused tool to help people
+          rebuild fitness after serious illness, using clear metrics and simple
+          coaching language rather than complex dashboards.
+        </div>
+        <ul class="card-list">
+          <li>Built from a survivor's perspective.</li>
+          <li>Designed for cyclists, runners and walkers.</li>
+          <li>Simple, daily decisions: ride, rest, or adjust.</li>
+        </ul>
+      </article>
+
+      <article class="card" id="garmin">
+        <div class="card-title">Why Garmin Connect access matters</div>
+        <div class="card-main">
+          Garmin devices already capture the depth of data we rely on: detailed
+          FIT files, heart-rate, power, sleep, stress and body-battery. Direct
+          access allows LOEW to give timely and safe recommendations.
+        </div>
+        <ul class="card-list">
+          <li>Near real-time feedback after every session.</li>
+          <li>Accurate FTP and HR analysis from full data.</li>
+          <li>Combining training load with daily wellness metrics.</li>
+        </ul>
+      </article>
+
+      <article class="card" id="privacy">
+        <div class="card-title">Privacy & data protection</div>
+        <div class="card-main">
+          Health and activity data are treated as highly sensitive. LOEW is
+          committed to strict privacy and control for each user.
+        </div>
+        <ul class="card-list">
+          <li>Explicit consent for every connection (Garmin, Strava, etc.).</li>
+          <li>Secure storage, encrypted in transit, limited access.</li>
+          <li>No selling of identifiable data to third parties.</li>
+          <li>Easy disconnect and data deletion on request.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
       <div>
-        © <span id="year"></span> LOEW / myloew.fit &mdash; Personalized
-        Recovery & Training Coach.
+        © <span id="year"></span> LOEW / myloew.fit — Personalized Recovery &
+        Training Coach.
       </div>
       <div class="footer-links">
         <a href="mailto:hello@myloew.fit">Contact</a>
         <a href="mailto:hello@myloew.fit?subject=Partnership%20inquiry">Partnerships</a>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <script>
-    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
