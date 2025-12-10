@@ -2,23 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>LOEW – Train Smarter, Recover Better | myloew.fit</title>
+  <title>LOEW – AI Cycling Coaching & Recovery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="LOEW is an adaptive AI coach that turns your rides and recovery into simple, personal guidance – for everyday cyclists and riders in recovery."
-  />
   <style>
     :root {
-      --tdf-yellow: #ffd800;
-      --tdf-yellow-soft: #ffe764;
-      --bg-dark: #111111;
-      --bg-light: #ffffff;
-      --text-main: #111111;
-      --text-muted: #555555;
-      --border-soft: #e5e5e5;
-      --radius-card: 20px;
-      --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.18);
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --accent: #c45043;
+      --card: #f6f6f6;
     }
 
     * {
@@ -27,632 +19,484 @@
 
     body {
       margin: 0;
+      padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: #f4f4f4;
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-      font-size: 18px;              /* גדול יותר */
-      line-height: 1.6;             /* ריווח שורות נעים */
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .top-stripe {
-      background: var(--tdf-yellow);
-      height: 6px;
-      width: 100%;
-    }
-
-    header {
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .header-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid #111;
-      background: radial-gradient(circle at 30% 15%, #ffffff, #ffd800);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 24px;
-      text-transform: uppercase;
-    }
-
-    .brand-text-main {
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 15px;
-    }
-
-    .brand-text-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-    }
-
-    .nav-badge {
-      background: #111;
-      color: #f5f5f5;
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
-
-    @media (max-width: 880px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 18px;
+    }
+
+    .pill {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f3f3f3;
+      color: #555;
     }
 
     /* HERO */
 
     .hero {
-      background: var(--bg-light);
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-card);
-      padding: 32px 28px 28px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 26px;
-    }
-
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-stripe {
-      position: absolute;
-      right: -60px;
-      top: -60px;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle at 30% 20%, var(--tdf-yellow-soft), var(--tdf-yellow));
-      opacity: 0.35;
-      transform: rotate(-18deg);
-    }
-
-    .hero-tag {
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 56px;
     }
 
     .hero-title {
-      font-size: 44px;     /* כותרת עוד יותר גדולה */
-      line-height: 1.08;
-      font-weight: 850;
-      margin: 0 0 12px;
+      font-size: 40px;
+      line-height: 1.1;
+      font-weight: 800;
+      margin: 0 0 14px;
     }
 
-    .hero-title span {
-      background: var(--tdf-yellow);
-      padding: 0 4px;
-      box-decoration-break: clone;
+    .hero-sub {
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 22px;
     }
 
-    .hero-subtitle {
-      font-size: 20px;     /* יותר גדול */
-      color: var(--text-muted);
-      margin: 0 0 16px;
-      max-width: 540px;
+    .hero-badge {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
-    .hero-hebrew {
-      font-size: 16px;     /* עברית יותר גדולה */
-      font-weight: 500;
-      direction: rtl;
-      text-align: right;
-      margin: 0 0 20px;
-      line-height: 1.7;    /* ריווח שורות נעים */
+    .hero-list {
+      margin: 0 0 24px;
+      padding-left: 18px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hero-list li {
+      margin-bottom: 6px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 14px;
+      align-items: center;
     }
 
     .btn-primary {
       border: none;
       border-radius: 999px;
-      padding: 13px 26px;
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+      padding: 12px 22px;
+      font-size: 15px;
+      font-weight: 600;
       cursor: pointer;
-      background: #111111;
-      color: #f5f5f5;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
 
-    .btn-primary span {
-      font-size: 18px;
-      transform: translateY(1px);
-    }
-
-    .btn-secondary {
+    .btn-outline {
       border-radius: 999px;
-      padding: 11px 20px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      border: 1px solid #111111;
-      background: transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-foot {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-foot-item {
-      border-left: 2px solid #111;
-      padding-left: 10px;
-    }
-
-    .hero-foot-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 11px;
-    }
-
-    .hero-foot-value {
+      padding: 10px 18px;
       font-size: 14px;
-      font-weight: 600;
-      color: #111;
-      line-height: 1.5;
+      font-weight: 500;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #444;
+      text-decoration: none;
     }
 
-    /* HERO RIGHT – SIMPLE, BIG, ALIVE */
-
-    .hero-right {
-      background: var(--bg-dark);
-      color: #f5f5f5;
-      border-radius: var(--radius-card);
-      padding: 24px 22px 24px;
-      position: relative;
+    .hero-image-wrap {
+      border-radius: 24px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
     }
 
-    .hero-right-title {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 12px;
-      color: var(--tdf-yellow-soft);
-      margin-bottom: 12px;
-    }
-
-    .hero-right-main {
-      font-size: 20px;      /* יותר גדול */
-      font-weight: 600;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .hero-right-points {
-      font-size: 16px;      /* גדול יותר */
-      line-height: 1.7;     /* הרבה אוויר */
-      margin-bottom: 10px;
-    }
-
-    .hero-right-points span {
+    .hero-image-wrap img {
       display: block;
-      margin-bottom: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .hero-badge-row {
+    /* LOGO STRIP */
+
+    .logo-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12px;
-      margin-top: 10px;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 42px;
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    .hero-badge {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 216, 0, 0.9);
-      padding: 4px 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+    .logo-strip-logos {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .hero-right-ribbon {
-      position: absolute;
-      bottom: -30px;
-      right: -40px;
-      width: 130px;
-      height: 130px;
-      background: linear-gradient(
-        -45deg,
-        rgba(255, 216, 0, 0.1),
-        rgba(255, 216, 0, 0.8)
-      );
+    .logo-strip-logos img {
+      height: 26px;
+      width: auto;
+      display: block;
     }
 
-    /* FEATURE STRIP – 3 BIG PILLARS */
-
-    .feature-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      margin-bottom: 36px;
+    .logo-strip-logos img.logo-small {
+      height: 24px;
     }
 
-    @media (max-width: 800px) {
-      .feature-strip {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    /* SECTIONS */
+
+    section {
+      margin-bottom: 44px;
     }
 
-    .feature-card {
-      background: var(--bg-light);
-      border-radius: 16px;
-      padding: 20px 20px 18px;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
-    }
-
-    .feature-label {
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .feature-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .feature-text {
-      font-size: 16px;      /* טקסט עמודות גדול יותר */
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* SIMPLE HOW IT WORKS */
-
-    .how {
-      background: var(--bg-light);
-      border-radius: 18px;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
-      padding: 24px 22px 22px;
-      margin-bottom: 34px;
-    }
-
-    .how-label {
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
       margin-bottom: 10px;
     }
 
-    .how-title {
-      font-size: 22px;
-      font-weight: 750;
-      margin-bottom: 10px;
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 20px;
     }
 
-    .how-steps {
+    .cards-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 12px;
     }
 
-    @media (max-width: 800px) {
-      .how-steps {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 18px 18px 20px;
     }
 
-    .how-step {
-      font-size: 15px;
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    .how-step-number {
-      display: inline-flex;
+    .card-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* VISUAL STORY */
+
+    .visual-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
       align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      border: 1px solid #111;
-      font-size: 13px;
-      font-weight: 600;
-      margin-right: 8px;
+      background: #111;
+      color: #fff;
+      border-radius: 22px;
+      padding: 22px 22px 24px;
     }
 
-    .how-step-title {
-      font-weight: 600;
-      margin-bottom: 4px;
+    .visual-text-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
-    .how-step-text {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.7;
+    .visual-text-sub {
+      font-size: 14px;
+      color: #dddddd;
+      max-width: 420px;
+    }
+
+    .visual-image-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .visual-image-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.1) saturate(1.1);
+    }
+
+    /* BOTTOM CTA */
+
+    .cta-bottom {
+      background: linear-gradient(135deg, #111111, #2a1e1c);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 26px 22px 26px;
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .cta-text {
+      font-size: 14px;
+      color: #e8e8e8;
+    }
+
+    .cta-note {
+      font-size: 12px;
+      color: #c7c7c7;
+      margin-top: 6px;
     }
 
     footer {
-      border-top: 1px solid var(--border-soft);
-      padding: 20px 20px 28px;
-      font-size: 13px;
-      color: var(--text-muted);
-      background: #fafafa;
+      margin-top: 32px;
+      font-size: 12px;
+      color: #999;
     }
 
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero,
+      .visual-card,
+      .cta-bottom {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
     }
 
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    @media (max-width: 720px) {
+      .page {
+        padding: 20px 16px 40px;
+      }
 
-    .footer-links a {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .cards-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .hero-sub {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="top-stripe"></div>
+  <div class="page">
+    <header>
+      <div class="brand">LOEW</div>
+      <div class="pill">AI COACHING & RECOVERY</div>
+    </header>
 
-  <header>
-    <div class="header-inner">
-      <div class="brand">
-        <div class="brand-logo">L</div>
+    <!-- HERO -->
+    <main>
+      <section class="hero">
         <div>
-          <div class="brand-text-main">LOEW</div>
-          <div class="brand-text-sub">ADAPTIVE AI COACHING</div>
+          <div class="hero-badge">For cyclists & patients in recovery</div>
+          <h1 class="hero-title">AI Professional Coaching &amp; Recovery</h1>
+          <p class="hero-sub">
+            LOEW turns your rides, your heart-rate and (in the future) your
+            medical data into a personal coach – guiding every workout and every
+            step of recovery.
+          </p>
+
+          <ul class="hero-list">
+            <li>
+              <span class="highlight">Cyclists:</span>
+              structured, simple training plans, adapted after every ride.
+            </li>
+            <li>
+              <span class="highlight">Recovering patients:</span>
+              safe, gradual return to sport with coaching that respects your
+              body and your doctors.
+            </li>
+          </ul>
+
+          <div class="hero-actions">
+            <a href="#join" class="btn-primary">Join the early access list</a>
+            <a href="#how" class="btn-outline">How LOEW works</a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <!-- Road cycling photo from Wikimedia Commons (CC BY-SA 4.0) -->
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cycling_on_the_roads.jpg/960px-Cycling_on_the_roads.jpg"
+            alt="Group of cyclists riding on the road"
+          />
+        </div>
+      </section>
+
+      <!-- LOGO STRIP -->
+      <div class="logo-strip">
+        <span class="logo-strip-label">
+          Compatible with your favorite platforms:
+        </span>
+        <div class="logo-strip-logos">
+          <!-- Strava logo (text logo SVG from Wikimedia / Strava) -->
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Strava_Logo.svg"
+            alt="Strava logo"
+          />
+          <!-- Garmin icon (CC0 from SVGRepo) -->
+          <img
+            src="https://www.svgrepo.com/download/306081/garmin.svg"
+            alt="Garmin logo"
+            class="logo-small"
+          />
         </div>
       </div>
-      <nav>
-        <span>How it works</span>
-        <span>Who it's for</span>
-        <span class="nav-badge">Private Beta</span>
-      </nav>
-    </div>
-  </header>
 
-  <main class="page">
-    <section class="hero">
-      <div class="hero-stripe"></div>
-
-      <!-- LEFT HERO -->
-      <div>
-        <div class="hero-tag">Smart coaching for real riders</div>
-        <h1 class="hero-title">
-          Train smarter.<br />
-          Recover <span>better</span>.
-        </h1>
-
-        <p class="hero-subtitle">
-          LOEW is an AI coach that reads your rides, effort and recovery – and
-          turns them into simple, personal guidance.
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <h2 class="section-title">How LOEW helps you ride & recover</h2>
+        <p class="section-sub">
+          Behind the scenes LOEW uses evidence-based sports science and your
+          real training data to give you coaching a human can’t maintain ride
+          after ride.
         </p>
 
-        <p class="hero-hebrew">
-          לואו (LOEW) הוא מאמן חכם לרוכבים ומחלימים. מחברים את הנתונים, רוכבים
-          כרגיל – ומקבלים כיוון ברור: מתי לדחוף, מתי להוריד, ומתי לנוח.
-        </p>
-
-        <div class="hero-actions">
-          <a href="mailto:hello@myloew.fit?subject=Join%20LOEW%20early%20access">
-            <button type="button" class="btn-primary">
-              Join early access
-              <span>➜</span>
-            </button>
-          </a>
-          <a href="mailto:hello@myloew.fit?subject=Tell%20me%20more%20about%20LOEW">
-            <button type="button" class="btn-secondary">
-              Tell me more
-            </button>
-          </a>
-        </div>
-
-        <div class="hero-foot">
-          <div class="hero-foot-item">
-            <div class="hero-foot-label">Built by</div>
-            <div class="hero-foot-value">
-              Leukemia survivor & former national cyclist
+        <div class="cards-3">
+          <div class="card">
+            <div class="card-title">1. Understand your profile</div>
+            <div class="card-text">
+              Automatic analysis of FTP, heart rate, volume and terrain from
+              your recent rides – building your unique rider &amp; recovery
+              profile.
             </div>
           </div>
-          <div class="hero-foot-item">
-            <div class="hero-foot-label">Made for</div>
-            <div class="hero-foot-value">
-              Everyday cyclists & riders in recovery
+          <div class="card">
+            <div class="card-title">2. Plan tomorrow’s ride</div>
+            <div class="card-text">
+              Simple workouts you can remember: two effort levels per ride,
+              tailored to your goals – performance or safe return after
+              treatment.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">3. Learn from every session</div>
+            <div class="card-text">
+              LOEW scores each workout (execution, load, drift) and adjusts the
+              next one. No generic plans – everything reacts to how you really
+              ride and feel.
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- RIGHT HERO -->
-      <div class="hero-right">
-        <div>
-          <div class="hero-right-title">What you get</div>
-          <div class="hero-right-main">
-            Clear direction for every ride – without hiring a coach.
+      <!-- STORY / MEDICAL ANGLE -->
+      <section>
+        <div class="visual-card">
+          <div>
+            <div class="visual-text-title">
+              Built by a cyclist, tested in recovery
+            </div>
+            <div class="visual-text-sub">
+              LOEW was born from two journeys: hundreds of hours in the peloton
+              – and a long recovery after leukemia. It is designed for riders
+              who love numbers and for patients who need someone to watch over
+              every step back to normal life.
+            </div>
           </div>
-          <div class="hero-right-points">
-            <span>• See if you pushed too hard or just enough.</span>
-            <span>• Know when to go hard, go easy, or rest.</span>
-            <span>• Feel safer when you're training after illness or injury.</span>
-          </div>
-          <div class="hero-badge-row">
-            <span class="hero-badge">AI-powered</span>
-            <span class="hero-badge">Cycling-first</span>
-            <span class="hero-badge">Recovery-aware</span>
-          </div>
-        </div>
-        <div class="hero-right-ribbon"></div>
-      </div>
-    </section>
-
-    <!-- THREE SIMPLE PILLARS -->
-    <section class="feature-strip">
-      <article class="feature-card">
-        <div class="feature-label">Why LOEW</div>
-        <div class="feature-title">Coaching every ride</div>
-        <div class="feature-text">
-          Not once a month, not only after tests – LOEW reacts after each ride,
-          using your real data.
-        </div>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-label">For real life</div>
-        <div class="feature-title">Training & recovery</div>
-        <div class="feature-text">
-          Whether you're chasing PRs or coming back from illness, LOEW balances
-          effort and recovery so you don't guess.
-        </div>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-label">No extra work</div>
-        <div class="feature-title">Just connect & ride</div>
-        <div class="feature-text">
-          LOEW uses data from platforms like Strava and Garmin. You ride as
-          usual – LOEW does the thinking.
-        </div>
-      </article>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how">
-      <div class="how-label">How it works</div>
-      <div class="how-title">Three simple steps</div>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-title">
-            <span class="how-step-number">1</span>
-            Connect your data
-          </div>
-          <div class="how-step-text">
-            Link LOEW to Strava (and later Garmin) so it can read your rides and
-            basic metrics.
+          <div class="visual-image-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Cycling_on_the_roads.jpg/960px-Cycling_on_the_roads.jpg"
+              alt="Cyclists riding on the road"
+            />
           </div>
         </div>
+      </section>
 
-        <div class="how-step">
-          <div class="how-step-title">
-            <span class="how-step-number">2</span>
-            Ride like you always do
+      <!-- BOTTOM CTA -->
+      <section id="join">
+        <div class="cta-bottom">
+          <div>
+            <div class="cta-title">
+              Be part of the first LOEW riders &amp; recovery cohort
+            </div>
+            <div class="cta-text">
+              We’re starting with a small group of cyclists and patients in
+              recovery who want continuous, data-driven coaching – not another
+              generic training plan.
+            </div>
           </div>
-          <div class="how-step-text">
-            No new routines, no complicated app. Just ride – indoors or
-            outdoors.
+          <div>
+            <a href="mailto:royleow@gmail.com?subject=LOEW%20Early%20Access"
+               class="btn-primary"
+            >
+              Request early access
+            </a>
+            <div class="cta-note">
+              Priority for riders using Strava / Garmin and for patients in
+              post-treatment recovery who want to return to cycling safely.
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="how-step">
-          <div class="how-step-title">
-            <span class="how-step-number">3</span>
-            Get simple guidance
-          </div>
-          <div class="how-step-text">
-            LOEW shows if the load was right for you and what makes sense
-            tomorrow: push, go easy, or rest.
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>
-        © <span id="year"></span> LOEW / myloew.fit — Adaptive AI Coaching & Recovery.
-      </div>
-      <div class="footer-links">
-        <a href="mailto:hello@myloew.fit">Contact</a>
-        <a href="mailto:hello@myloew.fit?subject=Partnership%20inquiry">Partnerships</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+      <footer>
+        LOEW is an independent product and is not endorsed by Strava or Garmin.
+        Logos are used only to indicate compatibility with their platforms.
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
