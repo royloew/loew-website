@@ -33,21 +33,25 @@
       padding: 32px 20px 64px;
     }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  padding: 14px 20px;
-  border-bottom: 1px solid #efdfd4;
-  position: sticky;
-  top: 0;
-  background: #fff4ec; /* צבע רך ועדין לכל הסטריפ */
-  backdrop-filter: blur(14px);
-  z-index: 20;
-}
+    /* FULL-WIDTH HEADER STRIP */
 
+    .header-strip {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #fff4ec;              /* צבע רך ועדין לכל רוחב המסך */
+      border-bottom: 1px solid #efdfd4;
+      backdrop-filter: blur(14px);
+    }
 
+    .topbar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
     .brand {
       font-weight: 800;
@@ -55,55 +59,44 @@ header {
       font-size: 18px;
     }
 
-  .pill {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  padding: 7px 16px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #fff7f2, #ffe8df);
-  color: #333;
-  border: 1px solid #ff6b35;
-  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.15);
-}
-
-
+    .pill {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fff7f2, #ffe8df);
+      color: #333;
+      border: 1px solid #ff6b35;
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.15);
+    }
 
     .topbar-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
-.topbar-tagline {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-}
+    .topbar-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.topbar-right {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
+    .topbar-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff6b35, #c44d2f);
+      box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+      animation: pulse 1.8s infinite ease-in-out;
+    }
 
-.topbar-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ff6b35, #c44d2f);
-  box-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
-  animation: pulse 1.8s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.4); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.9; }
-}
-
-
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.9; }
+    }
 
     /* HERO */
 
@@ -222,7 +215,7 @@ header {
       height: 24px;
     }
 
-    /* Cohort CTA block – גרסה מתוקנת ויחידה */
+    /* Cohort CTA block */
 
     .cohort-box {
       margin-top: 40px;
@@ -232,7 +225,7 @@ header {
       padding: 40px 40px;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;   /* יישור למעלה */
+      align-items: flex-start;
       gap: 56px;
     }
 
@@ -402,52 +395,43 @@ header {
         padding: 20px 16px 40px;
       }
 
-      header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #ff6b35, #ffb347, #ffd86f, #7ed957, #1e90ff);
-}
-
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
 
       .cards-3 {
-    grid-template-columns: minmax(0, 1fr);
-  }
+        grid-template-columns: minmax(0, 1fr);
+      }
 
-  .hero-title {
-    font-size: 30px;
-  }
+      .hero-title {
+        font-size: 30px;
+      }
 
-  .hero-sub {
-    font-size: 17px;
-  }
+      .hero-sub {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
+  <!-- סטריפ עליון מלא רוחב -->
+  <div class="header-strip">
     <header class="topbar">
-  <div class="topbar-left">
-    <div class="brand">LOEW</div>
-    
+      <div class="topbar-left">
+        <div class="brand">LOEW</div>
+      </div>
+
+      <div class="topbar-right">
+        <span class="topbar-dot"></span>
+        <div class="pill">AI COACHING & RECOVERY</div>
+      </div>
+    </header>
   </div>
 
-  <div class="topbar-right">
-    <span class="topbar-dot"></span>
-    <div class="pill">AI COACHING & RECOVERY</div>
-  </div>
-</header>
-
-
+  <!-- שאר העמוד במרכז -->
+  <div class="page">
     <main>
       <!-- HERO -->
       <section class="hero">
@@ -516,58 +500,3 @@ header {
               next one. No generic plans – everything reacts to how you really
               ride and feel.
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SINGLE COHORT CTA (מתוקן ומיושר) -->
-      <section id="join" class="cohort-box">
-        <div class="cohort-left">
-          <h2>Be part of the first LOEW riders</h2>
-          <p>
-            We’re starting with a small group of cyclists and patients in recovery who
-            want continuous, data-driven coaching – not another generic training plan.
-          </p>
-        </div>
-
-        <div class="cohort-right">
-          <a
-            href="mailto:hello@myloew.fit?subject=LOEW%20Early%20Access"
-            class="cohort-cta-btn"
-          >
-            Request early access
-          </a>
-          <p class="cohort-note">
-            Priority for riders using Strava / Garmin and for patients in
-            post-treatment recovery who want to return to cycling safely.
-          </p>
-        </div>
-      </section>
-
-      <footer>
-        <div class="logo-strip">
-          <span class="logo-strip-label">
-            Compatible with your favorite platforms:
-          </span>
-          <div class="logo-strip-logos">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Strava_Logo.svg"
-              alt="Strava logo"
-            />
-            <img
-              src="https://www.svgrepo.com/download/306081/garmin.svg"
-              alt="Garmin logo"
-              class="logo-small"
-            />
-          </div>
-        </div>
-
-        <p style="margin-top:16px;">
-          LOEW is an independent product and is not endorsed by Strava or Garmin.
-          Logos are used only to indicate compatibility with their platforms.
-        </p>
-      </footer>
-    </main>
-  </div>
-</body>
-</html>
