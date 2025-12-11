@@ -173,6 +173,75 @@
       height: 24px;
     }
 
+    /* Cohort CTA block */
+.cohort-box {
+  margin-top: 40px;
+  background: #231e1c;          /* כמו עכשיו בערך */
+  color: #fff;
+  border-radius: 26px;
+  padding: 40px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;      /* ✅ מיושר למעלה, לא למרכז */
+  gap: 56px;                    /* רווח יפה בין צד שמאל לימין */
+}
+
+.cohort-left {
+  flex: 1 1 auto;
+}
+
+.cohort-left h2 {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+
+.cohort-left p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.cohort-right {
+  flex: 0 0 320px;              /* צד ימין צר ואלגנטי */
+  text-align: center;
+}
+
+.cohort-cta-btn {
+  display: inline-block;
+  background: #cf6450;          /* הכפתור הכתום שלך */
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.cohort-note {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+/* רספונסיבי למובייל */
+@media (max-width: 900px) {
+  .cohort-box {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .cohort-right {
+    flex: none;
+    text-align: left;
+  }
+}
+
+
     /* SECTIONS */
 
     section {
@@ -420,27 +489,27 @@
       </section>
 
       <!-- STORY / MEDICAL ANGLE -->
-      <section>
-        <div class="visual-card">
-          <div>
-            <div class="visual-text-title">
-              Built by a cyclist, tested in recovery
-            </div>
-            <div class="visual-text-sub">
-              LOEW was born from two journeys: hundreds of hours in the peloton
-              – and a long recovery after leukemia. It is designed for riders
-              who love numbers and for patients who need someone to watch over
-              every step back to normal life.
-            </div>
-          </div>
-          <div class="visual-image-wrap">
-            <img
-              src="images/hero-cyclists.jpg"
-              alt="Cyclists riding on a mountain road"
-            />
-          </div>
-        </div>
-      </section>
+      <section class="cohort-box">
+  <div class="cohort-left">
+    <h2>Be part of the first LOEW riders &amp; recovery cohort</h2>
+    <p>
+      We’re starting with a small group of cyclists and patients in recovery who
+      want continuous, data-driven coaching – not another generic training plan.
+    </p>
+  </div>
+
+  <div class="cohort-right">
+    <a href="mailto:hello@myloew.fit?subject=LOEW%20Early%20Access"
+       class="cohort-cta-btn">
+      Request early access
+    </a>
+    <p class="cohort-note">
+      Priority for riders using Strava / Garmin and for patients in
+      post-treatment recovery who want to return to cycling safely.
+    </p>
+  </div>
+</section>
+
 
       <!-- BOTTOM CTA -->
       <section id="join">
