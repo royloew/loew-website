@@ -34,11 +34,19 @@
     }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 14px 0;
+  border-bottom: 1px solid #efefef;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  z-index: 20;
+}
+
 
     .brand {
       font-weight: 800;
@@ -47,14 +55,45 @@
     }
 
     .pill {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f3f3f3;
-      color: #555;
-    }
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f7f7f7, #f0f0f0);
+  color: #444;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+
+
+    .topbar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topbar-tagline {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.topbar-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffb89f, #c45043);
+  box-shadow: 0 0 0 4px rgba(196, 80, 67, 0.18);
+}
+
 
     /* HERO */
 
@@ -354,31 +393,41 @@
       }
 
       header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
       .cards-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-      .hero-title {
-        font-size: 30px;
-      }
+  .hero-title {
+    font-size: 30px;
+  }
 
-      .hero-sub {
-        font-size: 17px;
-      }
+  .hero-sub {
+    font-size: 17px;
+  }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
-      <div class="brand">LOEW</div>
-      <div class="pill">AI COACHING & RECOVERY</div>
-    </header>
+    <header class="topbar">
+  <div class="topbar-left">
+    <div class="brand">LOEW</div>
+    <div class="topbar-tagline">
+      AI cycling coach for performance & recovery
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <span class="topbar-dot"></span>
+    <div class="pill">AI COACHING & RECOVERY</div>
+  </div>
+</header>
+
 
     <main>
       <!-- HERO -->
